@@ -1,59 +1,86 @@
 package info.chirikualii.examplejetpackcompose
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
-import androidx.ui.core.clip
 import androidx.ui.core.setContent
-import androidx.ui.foundation.Border
-import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
-import androidx.ui.foundation.clickable
 import androidx.ui.foundation.lazy.LazyColumnItems
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.imageFromResource
 import androidx.ui.layout.*
-import androidx.ui.material.Card
-import androidx.ui.material.TopAppBar
-import androidx.ui.res.imageResource
+import androidx.ui.material.*
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import info.chirikualii.examplejetpackcompose.ui.ExampleJetpackComposeTheme
 
 class MainActivity : AppCompatActivity() {
 
+    //init var
+    val listFeature = listOf(
+            ("Display Text"),
+            ("Display Styled Text"),
+            ("Vertical List Scrollable"),
+            ("Horizontal Carousel"),
+            ("Load Image"),
+            ("Clickable Component"),
+            ("Drawer App"),
+            ("Buttons"),
+            ("State"),
+            ("Custom View"),
+            ("Custom View Paint"),
+            ("Measuring Scale"),
+            ("Text Input Components"),
+            ("Stack Component"),
+            ("View Layout Arrangements Component"),
+            ("Material Design")
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            composeListPerson(personList = listPerson)
+            composeScaffold(
+                    listFeature
+            )
         }
     }
 }
-@Composable
-fun composeListPerson(personList : List<Person>){
 
-    LazyColumnItems(items = personList) {person ->
-        val index = personList.indexOf(person)
+@Composable
+fun composeScaffold(listFeature :List<String>?=null) {
+    Scaffold(
+            topBar = {
+                TopAppBar(
+                        title = { Text(text = "Fun Jetpack Compose") }
+                )
+            },
+            bodyContent = {padding ->
+                listFeature?.let { composeList(List = it) }
+            }
+    )
+}
+
+@Composable
+fun composeList(List: List<String> = listOf()) {
+
+    LazyColumnItems(items = List) { data->
+        val index = List.indexOf(data)
         Row(modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()) {
 
             Card(
-                shape = RoundedCornerShape(4.dp),
-                color = Color.Blue,
-                modifier = Modifier.fillMaxWidth()
+                    shape = RoundedCornerShape(4.dp),
+                    color = Color(0xFF6200EE),
+                    modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = person.name.toString(),
-                    style = TextStyle(color = Color.Black,
-                        fontSize = 20.sp,
-                        textAlign = TextAlign.Center
-                    ),
-                    modifier = Modifier.padding(8.dp)
+                        text = data,
+                        style = TextStyle(color = Color.White,
+                                fontSize = 20.sp,
+                                textAlign = TextAlign.Center
+                        ),
+                        modifier = Modifier.padding(24.dp)
                 )
             }
 
@@ -62,31 +89,58 @@ fun composeListPerson(personList : List<Person>){
 
 }
 
+
+
+
 @Preview
 @Composable
-fun composeListPersonPreview(){
-
-    composeListPerson(personList = listPerson)
-
+fun composeScaffoldPreview() {
+    val listFeature = listOf(
+            ("Display Text"),
+            ("Display Styled Text"),
+            ("Vertical List Scrollable"),
+            ("Horizontal Carousel"),
+            ("Load Image"),
+            ("Clickable Component"),
+            ("Drawer App"),
+            ("Buttons"),
+            ("State"),
+            ("Custom View"),
+            ("Custom View Paint"),
+            ("Measuring Scale"),
+            ("Text Input Components"),
+            ("Stack Component"),
+            ("View Layout Arrangements Component"),
+            ("Material Design")
+    )
+    composeScaffold(listFeature)
 }
 
-data class Person(
-        var name :String?=null,
-        var age:Int )
+@Preview
+@Composable
+fun composeListPreview() {
+    val listFeature = listOf(
+            ("Display Text"),
+            ("Display Styled Text"),
+            ("Vertical List Scrollable"),
+            ("Horizontal Carousel"),
+            ("Load Image"),
+            ("Clickable Component"),
+            ("Drawer App"),
+            ("Buttons"),
+            ("State"),
+            ("Custom View"),
+            ("Custom View Paint"),
+            ("Measuring Scale"),
+            ("Text Input Components"),
+            ("Stack Component"),
+            ("View Layout Arrangements Component"),
+            ("Material Design")
+    )
+    composeList(listFeature)
+}
 
-val listPerson = listOf<Person>(
-    Person("Grace Hopper", 25),
-    Person("Ada Lovelace", 29),
-    Person("John Smith", 28),
-    Person("Elon Musk", 41),
-    Person("Will Smith", 31),
-    Person("Robert James", 42),
-    Person("Anthony Curry", 91),
-    Person("Kevin Jackson", 22),
-    Person("Robert Curry", 1),
-    Person("John Curry", 9),
-    Person("Ada Jackson", 2),
-    Person("Joe Defoe", 35)
-)
+
+
 
 
