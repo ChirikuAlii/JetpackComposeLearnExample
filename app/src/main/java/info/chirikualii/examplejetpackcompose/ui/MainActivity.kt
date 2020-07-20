@@ -1,11 +1,13 @@
-package info.chirikualii.examplejetpackcompose
+package info.chirikualii.examplejetpackcompose.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.foundation.lazy.LazyColumnItems
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
@@ -38,36 +40,53 @@ class MainActivity : AppCompatActivity() {
             ("View Layout Arrangements Component"),
             ("Material Design")
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             composeScaffold(
-                    listFeature
+                listFeature,
+                onClickItemList = { index ->
+                    when (index) {
+
+                        0 -> {
+                            val intent = Intent(this, DisplayTextActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+                }
             )
         }
     }
 }
 
 @Composable
-fun composeScaffold(listFeature :List<String>?=null) {
+fun composeScaffold(listFeature: List<String>? = null, onClickItemList: (index: Int) -> Unit) {
     Scaffold(
             topBar = {
                 TopAppBar(
                         title = { Text(text = "Fun Jetpack Compose") }
                 )
             },
-            bodyContent = {padding ->
-                listFeature?.let { composeList(List = it) }
+            bodyContent = { padding ->
+                listFeature?.let {
+                    composeList(
+                        List = it,
+                        onClick = { index ->
+                            onClickItemList(index)
+                        })
+                }
             }
     )
 }
 
 @Composable
-fun composeList(List: List<String> = listOf()) {
+fun composeList(List: List<String> = listOf(), onClick: (index: Int) -> Unit) {
 
-    LazyColumnItems(items = List) { data->
+    LazyColumnItems(items = List) { data ->
         val index = List.indexOf(data)
-        Row(modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()) {
+        Row(modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
+                + Modifier.clickable(onClick = { onClick(index) })) {
 
             Card(
                     shape = RoundedCornerShape(4.dp),
@@ -88,8 +107,6 @@ fun composeList(List: List<String> = listOf()) {
     }
 
 }
-
-
 
 
 @Preview
@@ -113,7 +130,9 @@ fun composeScaffoldPreview() {
             ("View Layout Arrangements Component"),
             ("Material Design")
     )
-    composeScaffold(listFeature)
+    composeScaffold(
+        listFeature,
+        onClickItemList = {})
 }
 
 @Preview
@@ -137,7 +156,7 @@ fun composeListPreview() {
             ("View Layout Arrangements Component"),
             ("Material Design")
     )
-    composeList(listFeature)
+    composeList(listFeature) {}
 }
 
 

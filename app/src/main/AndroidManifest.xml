@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="info.chirikualii.examplejetpackcompose" >
+    package="info.chirikualii.examplejetpackcompose">
 
     <application
         android:allowBackup="true"
@@ -8,11 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExampleJetpackCompose" >
+        android:theme="@style/Theme.ExampleJetpackCompose">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.DisplayTextActivity"
+            android:label="@string/title_activity_display_text"
+            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar"></activity>
+        <activity
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar" >
+            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

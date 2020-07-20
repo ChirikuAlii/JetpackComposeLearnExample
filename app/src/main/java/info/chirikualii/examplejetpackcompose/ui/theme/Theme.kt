@@ -1,4 +1,4 @@
-package info.chirikualii.examplejetpackcompose.ui
+package info.chirikualii.examplejetpackcompose.ui.theme
 
 import androidx.compose.Composable
 import androidx.ui.foundation.isSystemInDarkTheme

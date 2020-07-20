@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ExampleJetpackCompose</string>
+    <string name="title_activity_display_text">Display Text Compose</string>
 </resources>

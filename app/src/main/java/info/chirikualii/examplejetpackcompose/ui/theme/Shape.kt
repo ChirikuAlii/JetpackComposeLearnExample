@@ -1,4 +1,4 @@
-package info.chirikualii.examplejetpackcompose.ui
+package info.chirikualii.examplejetpackcompose.ui.theme
 
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.material.Shapes

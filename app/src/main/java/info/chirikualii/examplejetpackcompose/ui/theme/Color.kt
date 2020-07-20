@@ -1,4 +1,4 @@
-package info.chirikualii.examplejetpackcompose.ui
+package info.chirikualii.examplejetpackcompose.ui.theme
 
 import androidx.ui.graphics.Color
 

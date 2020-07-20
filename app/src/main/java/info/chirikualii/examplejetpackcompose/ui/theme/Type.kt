@@ -1,4 +1,4 @@
-package info.chirikualii.examplejetpackcompose.ui
+package info.chirikualii.examplejetpackcompose.ui.theme
 
 import androidx.ui.material.Typography
 import androidx.ui.text.TextStyle
