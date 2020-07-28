@@ -1,4 +1,4 @@
-# Info
+# Jetpack Compose Playground
 I use the concept of **"Learning by Doing"**. I just rewrote the existing code little by little to make it easier to learn and understand it
 
 
