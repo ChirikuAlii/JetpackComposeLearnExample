@@ -53,6 +53,11 @@ class MainActivity : AppCompatActivity() {
                             val intent = Intent(this, DisplayTextActivity::class.java)
                             startActivity(intent)
                         }
+
+                        1 -> {
+                            val intent =Intent(this, CustomTextActivity::class.java)
+                            startActivity(intent)
+                        }
                     }
                 }
             )
