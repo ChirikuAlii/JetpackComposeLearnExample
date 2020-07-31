@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     val listFeature = listOf(
             ("Display Text"),
             ("Display Styled Text"),
-            ("Vertical List Scrollable"),
+            ("Lazy List Scrollable"),
             ("Horizontal Carousel"),
             ("Load Image"),
             ("Clickable Component"),
@@ -56,6 +56,11 @@ class MainActivity : AppCompatActivity() {
 
                         1 -> {
                             val intent =Intent(this, CustomTextActivity::class.java)
+                            startActivity(intent)
+                        }
+
+                        2 -> {
+                            val intent = Intent(this, VerticalScrollActivity::class.java)
                             startActivity(intent)
                         }
                     }
