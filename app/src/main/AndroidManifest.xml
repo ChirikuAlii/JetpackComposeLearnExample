@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleJetpackCompose">
         <activity
+            android:name=".ui.HorizontalCarouselActivity"
+            android:label="Horizontal Carousel Activity"
+            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar"/>
+
+        <activity
             android:name=".ui.VerticalScrollActivity"
             android:label="@string/title_activity_vertical_scroll"
-            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar"></activity>
+            android:theme="@style/Theme.ExampleJetpackCompose.NoActionBar" />
         <activity
             android:name=".ui.CustomTextActivity"
             android:label="Custom Text Compose"

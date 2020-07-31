@@ -63,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                             val intent = Intent(this, VerticalScrollActivity::class.java)
                             startActivity(intent)
                         }
+
+                        3  -> {
+                            val intent =Intent(this, HorizontalCarouselActivity::class.java)
+                            startActivity(intent)
+                        }
                     }
                 }
             )
